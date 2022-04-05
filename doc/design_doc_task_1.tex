@@ -1,0 +1,139 @@
+\documentclass[12pt]{article}
+\usepackage[md]{titlesec}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\usepackage{geometry}
+\usepackage{array,multirow}
+\geometry{
+ a4paper,
+ left=10mm,
+ right=10mm,
+ top=10mm
+ }
+
+\let\oldsection\section
+\renewcommand{\section}{\stepcounter{section}\oldsection*}
+\renewcommand{\thesubsection}{A\arabic{subsection}.}
+\renewcommand{\thesubsubsection}{\qquad(\alph{subsubsection})}
+
+\usepackage{sectsty}
+\sectionfont{\normalfont\fontfamily{helvet}\fontsize{12}{19}\selectfont}
+\subsectionfont{\normalfont\fontfamily{helvet}\fontsize{12}{19}\selectfont}
+\subsubsectionfont{\normalfont\fontfamily{helvet}\fontsize{12}{19}\selectfont}
+
+\usepackage{amsmath}
+\usepackage[makeroom]{cancel}
+\usepackage{minted}
+
+\title{\textbf{Pintos Task 1 : Scheduling \\ Design Document}}
+\author{\vspace{-5ex}}
+\date{\vspace{-5ex}}
+
+\begin{document}
+
+\maketitle
+
+\section*{\bf Group}
+@imperial.ac.uk\\
+@imperial.ac.uk\\
+rahul.gupta19@imperial.ac.uk\\
+@imperial.ac.uk\\
+
+\section*{\bf Preliminaries}
+If you have any preliminary comments on your submission, or notes for the markers, please give them here.\\~\\
+Please cite any offline or online sources you consulted while preparing your submission, other than the Pintos documentation, course text, lecture notes and course staff.\\
+
+\begin{center}
+    '\textsc{\LARGE \bf Priority Scheduling}\\    
+\end{center}
+
+
+\section*{\bf Data Structures}
+\subsection{Copy here the declaration of each new or changed '\texttt{struct}’ or '\texttt{struct}’ member, global or static variable, '\texttt{typedef}’, or enumeration. Identify the purpose of each in roughly 25 words. \textbf{(2 marks)}}
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 1 ---------------------------------------------
+
+\subsection{Draw a diagram that illustrates a nested donation in your structure and briefly explain how this works.\textbf{(4 marks)}}
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 2 ---------------------------------------------
+
+\section*{\bf Algorithms}
+\subsection{How do you ensure that the highest priority waiting thread wakes up first for a (i) lock, (ii) semaphore, or (iii) condition variable? \textbf{(3 marks)}}
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 3 ---------------------------------------------
+\subsection{Describe the sequence of events when a call to '\texttt{lock\_acquire()}' causes a priority donation. How is nested donation handled?
+ \textbf{(3 marks)}}
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 4 ---------------------------------------------
+\subsection{Describe the sequence of events when '\texttt{lock\_release()}' is called on a lock that a higher-priority thread is waiting for.
+ \textbf{(3 marks)}}
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 5 ---------------------------------------------
+
+\section*{\bf Synchronisation}
+\subsection{How do you avoid a race condition in '\texttt{thread\_set\_priority()}' when a thread needs to recompute its effective priority, but the donated priorities potentially change during the computation? Can you use a lock to avoid the race? \textbf{(2 mark)}}
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 6 ---------------------------------------------
+
+\section*{\bf Rationale}
+\subsection{Why did you choose this design? In what ways is it superior to another design you considered? \textbf{(3 marks)}}
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 7 ---------------------------------------------
+
+\setcounter{subsection}{0}
+\renewcommand{\thesubsection}{B\arabic{subsection}.}
+
+\begin{center}
+    '\textsc{\LARGE \bf Advanced Scheduler}\\    
+\end{center}
+
+\section*{\bf Data Structures}
+\subsection{Copy here the declaration of each new or changed '\texttt{struct}' or '\texttt{struct}' member, global or static variable, '\texttt{typedef}', or enumeration. Identify the purpose of each in roughly 25 words. \textbf{(2 marks)}}
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 1 ---------------------------------------------
+\section*{\bf Algorithms}
+\subsection{Suppose threads A, B, and C have nice values 0, 1, and 2 and each has a '\texttt{recent\_cpu}' value of 0. Fill in the table below showing the scheduling decision, the '\texttt{priority}' and the '\texttt{recent\_cpu}' values for each thread after each given number of timer ticks: \textbf{(3 marks)}}
+\begin{center}
+\begin{tabular}{| *{8}{c|} }
+    \hline
+\multirow{2}{*}{timer ticks}    & \multicolumn{3}{c|}{recent\_cpu} & \multicolumn{3}{c|}{priority} & \multirow{2}{*}{thread to run}\\
+    \cline{2-7}
+    &A &B &C &A &B &C &\\
+    \hline
+0   &     &     &     &     &     &     &       \\
+4   &     &     &     &     &     &     &       \\
+8   &     &     &     &     &     &     &       \\
+12   &     &     &     &     &     &     &       \\
+16   &     &     &     &     &     &     &       \\
+20   &     &     &     &     &     &     &       \\
+24   &     &     &     &     &     &     &       \\
+28   &     &     &     &     &     &     &       \\
+32   &     &     &     &     &     &     &       \\
+36   &     &     &     &     &     &     &       \\
+    
+    \hline
+\end{tabular}
+    \end{center}
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 2 ---------------------------------------------
+\subsection{Did any ambiguities in the scheduler specification make values in the table uncertain? If so, what rule did you use to resolve them?
+ \textbf{(2 marks)}}
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 3 ---------------------------------------------
+\section*{\bf Rationale}
+\subsection{Briefly critique your design, pointing out advantages and disadvantages in your design choices. \textbf{(3 marks)}}
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 4 ---------------------------------------------
+\end{document}

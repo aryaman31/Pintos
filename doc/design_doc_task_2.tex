@@ -1,0 +1,128 @@
+\documentclass[12pt]{article}
+\usepackage[md]{titlesec}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\usepackage{geometry}
+\geometry{
+ a4paper,
+ left=10mm,
+ right=10mm,
+ top=10mm
+ }
+
+\let\oldsection\section
+\renewcommand{\section}{\stepcounter{section}\oldsection*}
+\renewcommand{\thesubsection}{A\arabic{subsection}.}
+\renewcommand{\thesubsubsection}{\qquad(\alph{subsubsection})}
+
+\usepackage{sectsty}
+\sectionfont{\normalfont\fontfamily{helvet}\fontsize{12}{19}\selectfont}
+\subsectionfont{\normalfont\fontfamily{helvet}\fontsize{12}{19}\selectfont}
+\subsubsectionfont{\normalfont\fontfamily{helvet}\fontsize{12}{19}\selectfont}
+
+\usepackage{amsmath}
+\usepackage[makeroom]{cancel}
+\usepackage{minted}
+
+\title{\textbf{Pintos Task 2 : User Programs \\ Design Document}}
+\author{\vspace{-5ex}}
+\date{\vspace{-5ex}}
+
+\begin{document}
+
+\maketitle
+
+\section*{\bf Group}
+@imperial.ac.uk\\
+@imperial.ac.uk\\
+rahul.gupta19@imperial.ac.uk\\
+@imperial.ac.uk\\
+
+\section*{\bf Preliminaries}
+If you have any preliminary comments on your submission, or notes for the markers, please give them here.\\~\\
+Please cite any offline or online sources you consulted while preparing your submission, other than the Pintos documentation, course text, lecture notes and course staff.\\
+
+\begin{center}
+    '\textsc{\LARGE \bf Argument Passing}\\    
+\end{center}
+
+
+\section*{\bf Data Structures}
+\subsection{Copy here the declaration of each new or changed '\texttt{struct}’ or '\texttt{struct}’ member, global or static variable, '\texttt{typedef}’, or enumeration. Identify the purpose of each in roughly 25 words. \textbf{(1 marks)}}
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 1 ---------------------------------------------
+
+\section*{\bf Algorithms}
+\subsection{How does your argument parsing code avoid overflowing the user's stack page? What are the efficiency considerations of your approach? \textbf{(2 marks)}}
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 2 ---------------------------------------------
+
+\section*{\bf Rationale}
+\subsection{Pintos does not implement \texttt{strtok()} because it is not thread safe. Explain the problem with \texttt{strtok()} and how \texttt{strtok\_r()} avoids this issue. \textbf{(2 marks)}}
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 3 ---------------------------------------------
+\subsection{In Pintos, the kernel separates commands into an executable name and arguments. In Unix-like systems, the shell does this separation.Identify three advantages of the Unix approach.  \textbf{(3 marks)}}
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 4 ---------------------------------------------
+
+\setcounter{subsection}{0}
+\renewcommand{\thesubsection}{B\arabic{subsection}.}
+
+\begin{center}
+    '\textsc{\LARGE \bf System Calls}\\    
+\end{center}
+
+\section*{\bf Data Structures}
+\subsection{Copy here the declaration of each new or changed '\texttt{struct}' or '\texttt{struct}' member, global or static variable, '\texttt{typedef}', or enumeration. Identify the purpose of each in roughly 25 words. \textbf{(6 marks)}}
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 1 ---------------------------------------------
+\section*{\bf Algorithms}
+\subsection{Describe how your code ensures safe memory access of user provided data from within the kernel. \textbf{(2 marks)}}
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 2 ---------------------------------------------
+\subsection{Suppose that we choose to verify user provided pointers by validating them before use (i.e. using the first method described in the spec). What is the least and the greatest possible number of inspections of the page table (e.g. calls to \texttt{pagedir\_get\_page()}) that would need to be made in the following cases? You must briefly explain the checking tactic you would use and how it applies to each case to generate your answers. \textbf{(3 marks)}}
+\subsubsection{A system call that passes the kernel a pointer to 10 bytes of user data.}
+\subsubsection{A system call that passes the kernel a pointer to a full page (4,096 bytes) of user data.}
+\subsubsection{A system call that passes the kernel a pointer to 4 full pages (16,384 bytes) of user data.}
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 3 ---------------------------------------------
+\subsection{When an error is detected during a system call handler, how do you ensure that all temporarily allocated resources (locks, buffers, etc.) are freed? \textbf{(2 marks)}}
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 4 ---------------------------------------------
+\subsection{Describe your implementation of the '\texttt{wait}' system call and how it interacts with process termination for both the parent and child. \textbf{(8 marks)}}
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 5 ---------------------------------------------
+\section*{\bf Synchronisation}
+\subsection{The '\texttt{exec}' system call returns -1 if loading the new executable fails, so it cannot return before the new executable has completed loading. How does your code ensure this?
+How is the load success/failure status passed back to the thread that calls '\texttt{exec}'? \textbf{(2 marks)}}
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 6 ---------------------------------------------
+\subsection{Consider parent process P with child process C. How do you ensure proper synchronization and avoid race conditions when: \textbf{(5 marks)}}
+\subsubsection{P calls wait(C) before C exits?}
+\subsubsection{P calls wait(C) after C exits?}
+\subsubsection{P terminates, without waiting, before C exits?}
+\subsubsection{P terminates, without waiting, after C exits?}Additionally, how do you ensure that all resources are freed regardless of the above case?\\
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 7 ---------------------------------------------
+\section*{\bf Rationale}
+\subsection{Why did you choose to implement safe access of user memory from the kernel in the way that you did? \textbf{(2 marks)}}
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 8 ---------------------------------------------
+\subsection{What advantages and disadvantages can you see to your design for file descriptors? \textbf{(2 marks)}}
+\underline{\textbf{Answer:}}\\
+TODO()
+%-------------- End of Question 9 ---------------------------------------------
+\end{document}
